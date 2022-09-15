@@ -5,12 +5,13 @@ function getCash(amount) {
   let newArr = [];
   if (amount > 0) {
     for (let i = 0; i < banknotes.length; i++) {
-      amount -= banknotes[i];
-      newArr.push(banknotes[i]);
+      while (amount - banknotes[i] >= 0) {
+        amount -= banknotes[i];
+        newArr.push(banknotes[i]);
+      }
     }
+    return newArr;
   }
-  return newArr;
 }
-
 console.log(getCash(874)); // [500, 200, 100, 50, 20, 2, 2
 console.log(getCash(1502));
